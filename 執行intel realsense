@@ -1,0 +1,2 @@
+run d435i realsense :$ realsense-viewer
+calibration:python 435di_align.py

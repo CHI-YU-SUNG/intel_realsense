@@ -1,0 +1,3 @@
+Cannot move to target thread (0x55da60c82900)
+    conda install pyqt==5.9.2
+    pip install opencv_python==4.1.025
