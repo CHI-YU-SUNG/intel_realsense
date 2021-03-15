@@ -1,7 +1,8 @@
 # Intel_realsense
-The method for user to use intel-realsens
+The method for user to use intel-realsense
 * Calibration
 * Save RGB and Depth video on real time
+* Appearance
 ## Environment setting
 * Step 1: Add Intel server to the list of repositories :\
 $ echo 'deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main' | sudo tee /etc/apt/sources.list.d/realsense-public.list
@@ -16,7 +17,7 @@ $ sudo apt-get install librealsense2-utils
 ## Usage
 RGB and Depth Calibration: $ python 435di_align.py\
 Mixture of RGB and Depth image: $ mixture.py\
-Save RGB and Depth video: $ python savevideo.py\
+Save RGB and Depth video: $ python savevideo.py
 * You can choose save the video into .mp4 or .avi format
 ## Demo
 ### Reference
