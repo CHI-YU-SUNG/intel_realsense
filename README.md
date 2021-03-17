@@ -2,7 +2,7 @@
 The method for user to use intel-realsense
 * Calibration
 * Save RGB and Depth video on real time
-* Appearance
+* Appearance ![alt tag](https://i.imgur.com/FBOGVIx.jpg)
 ## Environment setting
 * Step 1: Add Intel server to the list of repositories :\
 $ echo 'deb http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo xenial main' | sudo tee /etc/apt/sources.list.d/realsense-public.list
