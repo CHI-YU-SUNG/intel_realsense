@@ -21,6 +21,8 @@ $ sudo apt-get update
 $ sudo apt-get install librealsense2-dkms
 $ sudo apt-get install librealsense2-utils
 ```
+* If you still encounter some error while running the codes, try to use `pip install` .
+
 * Test: realsense-viewer
 ## Usage
 RGB and Depth Calibration: $ python 435di_align.py\
