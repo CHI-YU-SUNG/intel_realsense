@@ -25,7 +25,7 @@ $ sudo apt-get install librealsense2-utils
 
 * Test: 
 ```
-realsense-viewer
+$ realsense-viewer
 ```
 ## Usage
 RGB and Depth Calibration: $ python 435di_align.py\
