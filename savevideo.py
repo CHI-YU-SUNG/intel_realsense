@@ -47,7 +47,7 @@ try:
         #globals()['depth_' + str(n)] = "depth_image_" + str(i) 
         #print(globals()['depth_' + str(n)].shape)
         #np.save('color_numpy', color_image)
-        #np.save('./numpy//depth_1/depth_image_'+ str(n), depth_image)
+        np.save('./numpy/depth_1/depth_image_'+ str(n), depth_image)
         depth_image = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.2), cv2.COLORMAP_JET)
         # save video
         out.write(color_image)  
@@ -64,6 +64,7 @@ try:
             #cv2.imwrite('depth_img.jpg', depth_image) 
             break
         n += 1
+    
 
 finally:
     pipeline.stop()
