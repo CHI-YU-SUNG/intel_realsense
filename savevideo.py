@@ -11,6 +11,7 @@ import cv2
 import json
 import torch
 import skvideo.io
+import os
 # import png
 #!=====================================================================================================================
 pipeline = rs.pipeline()
@@ -33,6 +34,15 @@ outdepth = cv2.VideoWriter('depth_video.avi', cv2.VideoWriter_fourcc(*'XVID'), 3
 #out = cv2.VideoWriter('color_video.mp4',cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), 30, size)
 #outdepth = cv2.VideoWriter('depth_video.mp4',cv2.VideoWriter_fourcc('m', 'p', '4', 'v'), 30, size)
 depth_numpy = []
+color_numpy = []
+all_depth_numpy = []
+all_color_numpy = []
+depth_fpath = "./numpy/depth.npy"
+color_fpath = "./numpy/color.npy"
+if os.path.exists(depth_fpath):
+  os.remove(depth_fpath) # avoid keep append last time .npy file
+if os.path.exists(color_fpath):
+  os.remove(color_fpath) # avoid keep append last time .npy file
 n = 0
 try:
     while True:
@@ -44,11 +54,16 @@ try:
             continue
         color_image = np.asanyarray(color_frame.get_data())
         depth_image = np.asanyarray(depth_frame.get_data())
-        #globals()['depth_' + str(n)] = "depth_image_" + str(i) 
-        #print(globals()['depth_' + str(n)].shape)
-        #np.save('color_numpy', color_image)
-        np.save('./numpy/depth_1/depth_image_'+ str(n), depth_image)
+
+        ## save as numpy file
+        depth_numpy = np.copy(depth_image)# avoid to change depth_image size while display video
+        depth_numpy = np.expand_dims(depth_numpy, axis = 0) #change as n*480*640
+        all_depth_numpy.append(depth_numpy) #list
+        color_numpy = np.copy(color_image)# avoid to change color_image size while display video
+        color_numpy = np.expand_dims(color_numpy, axis = 0) #change as n*480*640*3
+        all_color_numpy.append(color_numpy) #list
         depth_image = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.2), cv2.COLORMAP_JET)
+
         # save video
         out.write(color_image)  
         outdepth.write(depth_image)
@@ -62,9 +77,14 @@ try:
             outdepth.release()
             #cv2.imwrite('color_img.jpg', color_image)
             #cv2.imwrite('depth_img.jpg', depth_image) 
+            print("depth: ",np.concatenate(all_depth_numpy,axis = 0).shape)
+            print("color: ",np.concatenate(all_color_numpy,axis = 0).shape)
+            np.save(depth_fpath, np.concatenate(all_depth_numpy,axis=0))
+            np.save(color_fpath, np.concatenate(all_color_numpy,axis=0))
+
             break
         n += 1
-    
+
 
 finally:
     pipeline.stop()
