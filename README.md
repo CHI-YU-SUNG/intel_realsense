@@ -1,5 +1,5 @@
 # Intel_realsense
-The method for user to use intel-realsense
+## G
 * RGB and depth realsense alignment calibration
 * Save RGB and Depth video on real time
 * Save numpy of video in depth and RGB
