@@ -1,5 +1,5 @@
 # Intel_realsense
-## G
+## Goal
 * RGB and depth realsense alignment calibration
 * Save RGB and Depth video on real time
 * Save numpy of video in depth and RGB
