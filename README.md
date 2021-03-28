@@ -1,7 +1,8 @@
 # Intel_realsense
 The method for user to use intel-realsense
-* Calibration
+* RGB and depth realsense alignment calibration
 * Save RGB and Depth video on real time
+* Save numpy of video in depth and RGB
 * Appearance ![alt tag](https://i.imgur.com/FBOGVIx.jpg)
 ## Environment setting
 * Step 1: Add Intel server to the list of repositories :\
@@ -33,10 +34,11 @@ Mixture of RGB and Depth image:
 ```
 $ mixture.py\
 ```
-Save RGB and Depth video: 
+Save RGB video + Depth video + RGB numpy file + depth numpy file : 
 ```
 $ python savevideo.py
 ```
+and you can press ```q``` to quit 
 * You can choose save the video into .mp4 or .avi format
 ## Demo
 ### Reference
